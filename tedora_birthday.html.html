@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tedora! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .stage {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            display: none;
+        }
+        
+        .stage.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+        
+        .stage h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .stage h2 {
+            font-size: 2.2em;
+            color: #6b46c1;
+            margin-bottom: 25px;
+        }
+        
+        .stage p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+        
+        .name-meaning {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.4em;
+            font-style: italic;
+        }
+        
+        .next-btn {
+            background: linear-gradient(45deg, #ff6b9d, #9b59b6);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        
+        .next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+        }
+        
+        .video-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            font-size: 1.3em;
+            border-radius: 15px;
+        }
+        
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkle 2s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .heart-emoji {
+            font-size: 2em;
+            animation: pulse 1.5s ease-in-out infinite;
+            margin: 0 10px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .memory-quote {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            font-style: italic;
+            font-size: 1.4em;
+            color: #2d3748;
+            margin: 25px 0;
+            border-left: 5px solid #ff6b9d;
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="container">
+        <!-- Stage 1: Birthday Intro -->
+        <div class="stage active" id="stage1">
+            <h1>Happy Birthday! 🎉</h1>
+            <h2>Tedora</h2>
+            <div class="name-meaning">
+                "God's Gift" ✨
+            </div>
+            <p>Today we celebrate someone truly special...</p>
+            <p>Someone whose name itself means "God's Gift" because that's exactly what you are to everyone who knows you</p>
+            <span class="heart-emoji">💜</span>
+            <button class="next-btn" onclick="nextStage(2)">Continue →</button>
+        </div>
+        
+        <!-- Stage 2: The BFF Moment -->
+        <div class="stage" id="stage2">
+            <h2>Do you remember when...</h2>
+            <div class="memory-quote">
+                "You are my BFF, not just a friend"
+            </div>
+            <p>Those words hit me deeper than you'll ever know...</p>
+            <p>In that moment, I realized what we really have isn't just any friendship</p>
+            <p>It's something rare and precious</p>
+            <span class="heart-emoji">🥺</span>
+            <button class="next-btn" onclick="nextStage(3)">Continue →</button>
+        </div>
+        
+        <!-- Stage 3: Heartfelt Message -->
+        <div class="stage" id="stage3">
+            <h2>From the bottom of my heart...</h2>
+            <p>I need to say this: I genuinely regret the times I hurt you and took your incredible loyalty for granted.</p>
+            <p>You've been patient with me when I didn't deserve it, and you've forgiven me more times than I can count.</p>
+            <p>Even when I gave you every reason to give up on me, you never did.</p>
+            <p>This BFF connection we have is special to me. You're not just any friend - you're someone I truly value and respect.</p>
+            <p>Thank you for being such an incredible person and an even better friend. I'm lucky to call you my BFF.</p>
+            <span class="heart-emoji">💕</span>
+            <button class="next-btn" onclick="nextStage(4)">Continue →</button>
+        </div>
+        
+        <!-- Stage 4: Video -->
+        <div class="stage" id="stage4">
+            <h2>This is us... 🦊🐕</h2>
+            <div class="video-container">
+                <video controls width="100%" style="border-radius: 15px;">
+                    <source src="birthday_video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p>Just like Tod and Copper... loyal friends forever, no matter what anyone says</p>
+            <span class="heart-emoji">🌸</span>
+            <button class="next-btn" onclick="nextStage(5)">Continue →</button>
+        </div>
+        
+        <!-- Stage 5: Final Celebration -->
+        <div class="stage" id="stage5">
+            <h1>Happy Birthday, Beautiful! 🎂</h1>
+            <p>Hope your day is as wonderful as you are!</p>
+            <p>Here's to many more years of amazing friendship</p>
+            <p>You deserve all the happiness in the world</p>
+            <div style="font-size: 3em; margin: 30px 0;">
+                🎉 💜 🌸 💕 ✨
+            </div>
+            <p><strong>Forever your BFF</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Create sparkle effect
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('sparkles').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+        
+        // Create sparkles continuously
+        setInterval(createSparkle, 300);
+        
+        // Stage navigation
+        function nextStage(stageNumber) {
+            // Hide current stage
+            document.querySelector('.stage.active').classList.remove('active');
+            
+            // Show next stage after a brief delay
+            setTimeout(() => {
+                document.getElementById('stage' + stageNumber).classList.add('active');
+            }, 200);
+        }
+        
+        // Add some extra magic
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.body.style.animation = 'none';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
